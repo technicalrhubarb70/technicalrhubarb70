@@ -2,19 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Kazi Ayesha Afia | Portfolio</title>
 
   <style>
     :root {
-      --background: #0d0d0d;
-      --surface: #151515;
-      --border: #292929;
+      --background: #0d1117;
+      --editor: #161b22;
+      --panel: #1c2128;
+      --border: #30363d;
+
+      --text: #e6edf3;
+      --muted: #8b949e;
       --yellow: #f7c948;
-      --yellow-soft: #ffe28a;
-      --text: #f5f5f5;
-      --muted: #a3a3a3;
+      --purple: #d2a8ff;
+      --blue: #79c0ff;
+      --green: #a5d6a7;
+      --orange: #ffa657;
+      --pink: #ff7b72;
+
+      --font: "Cascadia Code", "JetBrains Mono", Consolas, monospace;
     }
 
     * {
@@ -23,413 +35,429 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
       background: var(--background);
       color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.7;
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.9;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .hero {
-      position: relative;
-      min-height: 430px;
+    .editor {
+      width: min(1000px, 94%);
+      margin: 55px auto;
       overflow: hidden;
-      display: grid;
-      place-items: center;
-      border-top: 4px solid var(--yellow);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--editor);
+      box-shadow: 0 25px 80px rgb(0 0 0 / 35%);
+    }
+
+    .title-bar {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 15px 20px;
+      background: var(--panel);
       border-bottom: 1px solid var(--border);
-      background-color: #111;
     }
 
-    .honeycomb,
-    .honeycomb-glow {
-      position: absolute;
-      inset: 0;
-
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='72' viewBox='0 0 84 72'%3E%3Cpath d='M21 0L42 12L42 36L21 48L0 36L0 12ZM63 36L84 48L84 72L63 84L42 72L42 48Z' fill='none' stroke='%23333333' stroke-width='1.3'/%3E%3C/svg%3E");
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
     }
 
-    .honeycomb-glow {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='72' viewBox='0 0 84 72'%3E%3Cpath d='M21 0L42 12L42 36L21 48L0 36L0 12ZM63 36L84 48L84 72L63 84L42 72L42 48Z' fill='none' stroke='%23f7c948' stroke-width='2.6'/%3E%3C/svg%3E");
-
-      -webkit-mask-image: linear-gradient(
-        90deg,
-        transparent,
-        black,
-        transparent
-      );
-
-      mask-image: linear-gradient(
-        90deg,
-        transparent,
-        black,
-        transparent
-      );
-
-      -webkit-mask-size: 35% 100%;
-      mask-size: 35% 100%;
-
-      -webkit-mask-repeat: no-repeat;
-      mask-repeat: no-repeat;
-
-      animation: sweep 6s linear infinite;
-      filter: drop-shadow(0 0 7px rgba(247, 201, 72, 0.55));
+    .dot.red {
+      background: #ff5f57;
     }
 
-    @keyframes sweep {
-      from {
-        -webkit-mask-position: 140% 0;
-        mask-position: 140% 0;
-      }
-
-      to {
-        -webkit-mask-position: -50% 0;
-        mask-position: -50% 0;
-      }
+    .dot.amber {
+      background: #febc2e;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 35px;
-      background: rgba(13, 13, 13, 0.72);
-      border-radius: 12px;
+    .dot.green {
+      background: #28c840;
     }
 
-    .eyebrow {
-      margin: 0 0 12px;
-      color: var(--yellow);
-      font-family: monospace;
-      font-size: 14px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(36px, 7vw, 64px);
-      letter-spacing: -1px;
-    }
-
-    .subtitle {
-      margin: 12px 0 0;
+    .filename {
+      margin-left: 14px;
       color: var(--muted);
-      font-size: 17px;
-    }
-
-    main {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 70px 22px;
-    }
-
-    section {
-      margin-bottom: 65px;
-    }
-
-    h2 {
-      margin: 0 0 20px;
-      font-size: 23px;
-      font-weight: 600;
-    }
-
-    h2::before {
-      content: "// ";
-      color: var(--yellow);
-      font-family: monospace;
-    }
-
-    .about {
-      max-width: 720px;
-      color: var(--muted);
-    }
-
-    .quote {
-      padding: 25px 28px;
-      border-left: 3px solid var(--yellow);
-      background: var(--surface);
-    }
-
-    .quote p {
-      margin: 0;
-      font-size: 18px;
-      font-style: italic;
-    }
-
-    .quote span {
-      display: block;
-      margin-top: 12px;
-      color: var(--yellow);
-      font-size: 14px;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .skill {
-      padding: 9px 16px;
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      color: var(--text);
-      background: var(--surface);
-      font-family: monospace;
-      transition: 0.25s ease;
-    }
-
-    .skill:hover {
-      transform: translateY(-3px);
-      border-color: var(--yellow);
-      color: var(--yellow);
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-    }
-
-    .project {
-      padding: 22px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--surface);
-      transition: 0.25s ease;
-    }
-
-    .project:hover {
-      transform: translateY(-4px);
-      border-color: var(--yellow);
-    }
-
-    .project h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
-    }
-
-    .project p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .education {
-      padding: 20px 22px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--surface);
-    }
-
-    .education strong {
-      color: var(--yellow);
-    }
-
-    .education p {
-      margin: 7px 0 0;
-      color: var(--muted);
-    }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .button {
-      padding: 11px 19px;
-      border: 1px solid var(--yellow);
-      border-radius: 5px;
-      color: var(--yellow);
-      font-size: 14px;
-      transition: 0.25s ease;
-    }
-
-    .button:hover {
-      background: var(--yellow);
-      color: #111;
-    }
-
-    footer {
-      padding: 25px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      text-align: center;
       font-size: 13px;
     }
 
-    footer span {
+    .tab-bar {
+      display: flex;
+      background: #11161c;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab {
+      padding: 11px 22px;
+      color: var(--text);
+      background: var(--editor);
+      border-top: 2px solid var(--yellow);
+      font-size: 13px;
+    }
+
+    .tab span {
       color: var(--yellow);
     }
 
-    @media (max-width: 600px) {
-      .hero {
-        min-height: 340px;
-      }
+    .code {
+      padding: 35px 25px 45px;
+      counter-reset: line;
+    }
 
-      main {
-        padding: 55px 18px;
-      }
+    .line {
+      position: relative;
+      min-height: 29px;
+      padding-left: 58px;
+      overflow-wrap: anywhere;
+      counter-increment: line;
+    }
 
-      .hero-content {
-        margin: 20px;
-      }
+    .line::before {
+      position: absolute;
+      left: 0;
+      width: 35px;
+      color: #555f6d;
+      content: counter(line);
+      text-align: right;
+      user-select: none;
+    }
 
-      .eyebrow {
-        font-size: 11px;
+    .indent {
+      padding-left: 88px;
+    }
+
+    .indent-2 {
+      padding-left: 118px;
+    }
+
+    .comment {
+      color: var(--muted);
+    }
+
+    .keyword {
+      color: var(--pink);
+    }
+
+    .function {
+      color: var(--purple);
+    }
+
+    .variable {
+      color: var(--blue);
+    }
+
+    .string {
+      color: var(--green);
+    }
+
+    .number {
+      color: var(--orange);
+    }
+
+    .highlight {
+      color: var(--yellow);
+    }
+
+    .operator {
+      color: var(--pink);
+    }
+
+    .code a {
+      color: var(--green);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .code a:hover {
+      color: var(--yellow);
+      text-decoration: underline;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 9px;
+      height: 17px;
+      margin-left: 5px;
+      background: var(--yellow);
+      vertical-align: middle;
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .honeycomb-glow {
-        animation: none;
-        -webkit-mask-position: 70% 0;
-        mask-position: 70% 0;
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 18px;
+      background: var(--yellow);
+      color: #171717;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        font-size: 12px;
+      }
+
+      .editor {
+        width: 96%;
+        margin: 20px auto;
+      }
+
+      .code {
+        padding: 25px 10px 35px;
+      }
+
+      .line {
+        padding-left: 42px;
+      }
+
+      .line::before {
+        width: 28px;
+      }
+
+      .indent {
+        padding-left: 60px;
+      }
+
+      .indent-2 {
+        padding-left: 78px;
+      }
+
+      .status-bar {
+        font-size: 10px;
       }
     }
   </style>
 </head>
 
 <body>
-  <header class="hero">
-    <div class="honeycomb"></div>
-    <div class="honeycomb-glow"></div>
+  <main class="editor">
+    <div class="title-bar">
+      <span class="dot red"></span>
+      <span class="dot amber"></span>
+      <span class="dot green"></span>
 
-    <div class="hero-content">
-      <p class="eyebrow">Computer Science · AIUB</p>
-
-      <h1>Kazi Ayesha Afia</h1>
-
-      <p class="subtitle">
-        Software development · Problem-solving · Building with purpose
-      </p>
+      <span class="filename">
+        ayesha_portfolio.py
+      </span>
     </div>
-  </header>
 
-  <main>
-    <section>
-      <h2>About</h2>
-
-      <p class="about">
-        Computer Science and Engineering undergraduate at American
-        International University-Bangladesh, interested in software
-        development, web technologies, and creating practical applications.
-      </p>
-    </section>
-
-    <section>
-      <div class="quote">
-        <p>
-          “Knowledge without action is insanity, and action without
-          knowledge is void.”
-        </p>
-
-        <span>— Imam Al-Ghazali</span>
+    <div class="tab-bar">
+      <div class="tab">
+        <span>🐍</span> ayesha_portfolio.py
       </div>
-    </section>
+    </div>
 
-    <section>
-      <h2>Technologies</h2>
-
-      <div class="skills">
-        <span class="skill">Python</span>
-        <span class="skill">C#</span>
-        <span class="skill">PHP</span>
-        <span class="skill">JavaScript</span>
-        <span class="skill">HTML</span>
-        <span class="skill">CSS</span>
-        <span class="skill">MySQL</span>
-        <span class="skill">Git</span>
+    <div class="code">
+      <div class="line comment">
+        # Welcome to my corner of the internet.
       </div>
-    </section>
 
-    <section>
-      <h2>Projects</h2>
+      <div class="line"></div>
 
-      <div class="project-grid">
-        <article class="project">
-          <h3>AIUB CampusConnect</h3>
-
-          <p>
-            A student-focused platform for finding tutors, exploring
-            courses, and connecting through messaging.
-          </p>
-        </article>
-
-        <article class="project">
-          <h3>TakaTracker</h3>
-
-          <p>
-            A practical C# application focused on managing and
-            tracking personal finances.
-          </p>
-        </article>
-
-        <article class="project">
-          <h3>SuperShop Database</h3>
-
-          <p>
-            A database project for organizing and managing
-            supermarket-related information.
-          </p>
-        </article>
+      <div class="line">
+        <span class="keyword">class</span>
+        <span class="highlight">KaziAyeshaAfia</span>:
       </div>
-    </section>
 
-    <section>
-      <h2>Education</h2>
-
-      <div class="education">
-        <strong>
-          American International University-Bangladesh
-        </strong>
-
-        <p>
-          B.Sc. in Computer Science and Engineering
-        </p>
+      <div class="line indent comment">
+        # Computer Science and Engineering undergraduate.
       </div>
-    </section>
 
-    <section>
-      <h2>Connect</h2>
+      <div class="line"></div>
 
-      <div class="links">
+      <div class="line indent">
+        <span class="keyword">def</span>
+        <span class="function">__init__</span>(<span class="variable">self</span>):
+      </div>
+
+      <div class="line indent-2">
+        <span class="variable">self</span>.name
+        <span class="operator">=</span>
+        <span class="string">"Kazi Ayesha Afia"</span>
+      </div>
+
+      <div class="line indent-2">
+        <span class="variable">self</span>.university
+        <span class="operator">=</span>
+        <span class="string">"AIUB"</span>
+      </div>
+
+      <div class="line indent-2">
+        <span class="variable">self</span>.degree
+        <span class="operator">=</span>
+        <span class="string">"B.Sc. in Computer Science and Engineering"</span>
+      </div>
+
+      <div class="line indent-2">
+        <span class="variable">self</span>.location
+        <span class="operator">=</span>
+        <span class="string">"Dhaka, Bangladesh"</span>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="line indent">
+        <span class="keyword">def</span>
+        <span class="function">skills</span>(<span class="variable">self</span>):
+      </div>
+
+      <div class="line indent-2">
+        <span class="keyword">return</span> [
+      </div>
+
+      <div class="line indent-2">
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"Python"</span>,
+        <span class="string">"C#"</span>,
+        <span class="string">"PHP"</span>,
+      </div>
+
+      <div class="line indent-2">
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"JavaScript"</span>,
+        <span class="string">"HTML"</span>,
+        <span class="string">"CSS"</span>,
+      </div>
+
+      <div class="line indent-2">
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"MySQL"</span>,
+        <span class="string">"Git"</span>
+      </div>
+
+      <div class="line indent-2">
+        ]
+      </div>
+
+      <div class="line"></div>
+
+      <div class="line indent">
+        <span class="keyword">def</span>
+        <span class="function">projects</span>(<span class="variable">self</span>):
+      </div>
+
+      <div class="line indent-2">
+        <span class="keyword">return</span> {
+      </div>
+
+      <div class="line indent-2">
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"CampusConnect"</span>:
+        <span class="string">"Student networking platform"</span>,
+      </div>
+
+      <div class="line indent-2">
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"TakaTracker"</span>:
+        <span class="string">"Personal finance application"</span>,
+      </div>
+
+      <div class="line indent-2">
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"SuperShop Database"</span>:
+        <span class="string">"Database management project"</span>
+      </div>
+
+      <div class="line indent-2">
+        }
+      </div>
+
+      <div class="line"></div>
+
+      <div class="line indent">
+        <span class="keyword">def</span>
+        <span class="function">philosophy</span>(<span class="variable">self</span>):
+      </div>
+
+      <div class="line indent-2">
+        <span class="keyword">return</span> (
+      </div>
+
+      <div class="line indent-2">
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"Knowledge without action is insanity, "</span>
+      </div>
+
+      <div class="line indent-2">
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"and action without knowledge is void."</span>
+      </div>
+
+      <div class="line indent-2">
+        )
+        <span class="comment"># Imam Al-Ghazali</span>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="line indent">
+        <span class="keyword">def</span>
+        <span class="function">connect</span>(<span class="variable">self</span>):
+      </div>
+
+      <div class="line indent-2">
+        <span class="keyword">return</span> {
+      </div>
+
+      <div class="line indent-2">
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"github"</span>:
         <a
-          class="button"
           href="https://github.com/technicalrhubarb70"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
+        >"technicalrhubarb70"</a>,
+      </div>
 
+      <div class="line indent-2">
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"linkedin"</span>:
         <a
-          class="button"
           href="https://www.linkedin.com/in/kazi-a-30090815b/"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          LinkedIn
-        </a>
-
-        <a
-          class="button"
-          href="mailto:kazi.ayesha.afia@gmail.com"
-        >
-          Email
-        </a>
+        >"kazi-ayesha"</a>,
       </div>
-    </section>
-  </main>
 
-  <footer>
-    © 2026 Kazi Ayesha Afia · <span>Building with purpose.</span>
-  </footer>
+      <div class="line indent-2">
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"email"</span>:
+        <a href="mailto:kazi.ayesha.afia@gmail.com">"kazi.ayesha.afia@gmail.com"</a>
+      </div>
+
+      <div class="line indent-2">
+        }
+      </div>
+
+      <div class="line"></div>
+
+      <div class="line">
+        <span class="keyword">if</span>
+        <span class="variable">__name__</span>
+        <span class="operator">==</span>
+        <span class="string">"__main__"</span>:
+      </div>
+
+      <div class="line indent">
+        <span class="variable">ayesha</span>
+        <span class="operator">=</span>
+        <span class="highlight">KaziAyeshaAfia</span>()
+      </div>
+
+      <div class="line indent">
+        <span class="function">print</span>(
+        <span class="variable">ayesha</span>.<span class="function">philosophy</span>()
+        )
+        <span class="cursor"></span>
+      </div>
+    </div>
+
+    <div class="status-bar">
+      <span>main</span>
+
+      <span>Python · UTF-8 · Building with purpose</span>
+    </div>
+  </main>
 </body>
 </html>
