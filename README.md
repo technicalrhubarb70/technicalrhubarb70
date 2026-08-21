@@ -11,7 +11,7 @@
 *"Knowledge without action is insanity,*  
 *and action without knowledge is void."*
 
-**— Imam Al-Ghazali**
+**-Imam Al-Ghazali**
 
 <br>
 
